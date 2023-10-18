@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import AddProduct from './Components/AddProduct.jsx';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
     element: <App></App>,
   },
   {
-    path: 'addProduct'
+    path: 'addProduct',
+    element: <AddProduct></AddProduct>
   }
 ]);
 
