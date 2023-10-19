@@ -11,6 +11,7 @@ import AddProduct from './Components/AddProduct.jsx';
 import Login from './Components/Login.jsx';
 import Registration from './Components/Registration.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
+// import AuthProvider from './Providers/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {

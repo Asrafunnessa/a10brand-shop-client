@@ -1,13 +1,40 @@
-import { Link } from "react-router-dom";
+/* eslint-disable no-undef */
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
+
+    const {signIn, googleLogIn} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        console.log(email, password);
+        signIn(email, password)
+        .then(result => {
+            console.log(result.user);
+              //navigate after login
+              navigate(location?.state ? location.state : '/');
+        })
+        .catch(error => {
+            console.error(error);
+        })
+
+    }
+
+    const handleGoogleLogIn = () =>{
+        googleLogIn()
+        .then((result) => {
+            console.log(result);
+        }) 
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
     return (
@@ -34,7 +61,7 @@ const Login = () => {
                         <button className="btn btn-primary">Login</button>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-outline btn-secondary">
+                        <button onClick={handleGoogleLogIn} className="btn btn-outline btn-secondary">
                             Login With Google
                         </button>
                     </div>
