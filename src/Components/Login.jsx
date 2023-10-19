@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
 
-    const handleLogin = e =>{
+    const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -34,15 +34,15 @@ const Login = () => {
                         <button className="btn btn-primary">Login</button>
                     </div>
                     <div className="form-control mt-6">
-                <button className="btn btn-outline btn-secondary">
-                    Login With Google
-                </button>
-            </div>
+                        <button className="btn btn-outline btn-secondary">
+                            Login With Google
+                        </button>
+                    </div>
                 </form>
                 <p className="text-center mt-4">Do not have an account Please <Link className="text-blue-600 font-bold" to="/register">Register</Link></p>
             </div>
-          
-            
+
+
 
         </div>
     );
