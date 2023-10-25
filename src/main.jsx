@@ -60,12 +60,12 @@ const router = createBrowserRouter([
         path: '/addCart',
         element: <Cart></Cart>,
         loader: () => fetch(`http://localhost:5500/details`)
+      },
+      {
+        path: '/update/:id',
+        element: <Update></Update>,
+        loader: ({params}) => fetch(`http://localhost:5500/productsId/${params.id}`)
       }
-      // {
-      //   path: '/update/:id',
-      //   element: <Update></Update>,
-      //   loader: ({params}) => fetch(`http://localhost:5500/productsId/${params.id}`)
-      // }
     ]
   }
 ]);

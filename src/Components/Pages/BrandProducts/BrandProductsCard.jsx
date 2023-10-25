@@ -25,7 +25,6 @@ const BrandProductsCard = ({ brandProduct }) => {
                     </div>
                 </div>
             </div>
-            <h1></h1>
         </div>
     );
 };

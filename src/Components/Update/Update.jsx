@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 const Update = () => {
 
@@ -16,30 +16,30 @@ const Update = () => {
         const description = form.description.value;
         const image = form.image.value;
 
-        const newProduct = { _id, brandName, rating, productName, type, price, description, image }
+        const newUpdateProduct = { _id, brandName, rating, productName, type, price, description, image }
 
-        console.log(newProduct);
+        console.log(newUpdateProduct);
 
 
-        // fetch(`http://localhost:5500/details/${_id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newProduct)
-        // })
-        // .then(res=> res.json())
-        // .then(data => {
-        //     console.log(data);
-        //     if(data.insertedId){
-        //         Swal.fire({
-        //             title: 'Success!',
-        //             text: 'Add Update Successfully',
-        //             icon: 'success',
-        //             confirmButtonText: 'Cool'
-        //         })
-        //     }
-        // })
+        fetch(`http://localhost:5500/productsId/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newUpdateProduct)
+        })
+        .then(res=> res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Add Update Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
+        })
 
     }
 
