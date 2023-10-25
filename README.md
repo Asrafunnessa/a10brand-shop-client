@@ -9,9 +9,9 @@ Currently, two official plugins are available:
 
 
  
-### Question: Create a readme for client-side and write about your project (at least 5 bullet points). 
+#### Question: Create a readme for client-side and write about your project (at least 5 bullet points). 
 
-### Answer: This is a client-side readme for a my React.js project that includes both frontend and backend components, built using Firebase and featuring CRUD functionality. Below are five key points about this project:
+#### Answer: This is a client-side readme for a my React.js project that includes both frontend and backend components, built using Firebase and featuring CRUD functionality. Below are five key points about this project:
 
 
  ##### (1)React.js for Dynamic Frontend: 
