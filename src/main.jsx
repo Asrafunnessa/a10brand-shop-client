@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
@@ -7,28 +8,56 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import AddProduct from './Components/AddProduct.jsx';
-import Login from './Components/Login.jsx';
-import Registration from './Components/Registration.jsx';
+import AddProduct from './Components/AddProduct/AddProduct.jsx';
+import Login from './Components/login/Login.jsx';
+import Registration from './Components/registration/Registration.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
-// import AuthProvider from './Providers/AuthProvider.jsx';
+import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
+import Home from './Components/Pages/Home/Home.jsx';
+import BrandProducts from './Components/Pages/BrandProducts/BrandProducts.jsx';
+import Details from './Components/Details/Details.jsx';
+import Update from './Components/Update/Update.jsx';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-  },
-  {
-    path: 'addProduct',
-    element: <AddProduct></AddProduct>
-  },
-  {
-    path: '/login',
-    element: <Login></Login>
-  },
-  {
-    path: '/register',
-    element: <Registration></Registration>
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>,
+        loader: () => fetch('data.json')
+      },
+      {
+        path: 'addProduct',
+        element: <AddProduct></AddProduct>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Registration></Registration>
+      },
+      {
+        path: '/:name',
+        element: <BrandProducts></BrandProducts>,
+        loader: ({params}) => fetch(`http://localhost:5500/products/${params.name}`)
+      },
+      {
+        path: '/details/:id',
+        element: <Details></Details>,
+        loader: ({params}) => fetch(`http://localhost:5500/products/${params.id}`)
+      },
+      {
+        path: '/update/:id',
+        element: <Update></Update>,
+        loader: ({params}) => fetch(`http://localhost:5500/products/${params.id}`)
+      }
+    ]
   }
 ]);
 

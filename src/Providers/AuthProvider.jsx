@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
@@ -28,12 +28,29 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider);
     };
 
+    const logOut = () =>{
+        setLoading(true);
+        return signOut(auth);
+    }
+
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
+            console.log('user in the auth State Changed', currentUser);
+            setUser(currentUser);
+            setLoading(false);
+        });
+        return () =>{
+            unSubscribe();
+        }
+    },[])
+
     const userInfo = {
         user,
         loading,
         createUser,
         signIn,
-        googleLogIn
+        googleLogIn,
+        logOut
     }
 
     return (

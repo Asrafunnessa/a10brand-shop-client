@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthProvider";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
 
@@ -11,10 +11,11 @@ const Login = () => {
 
     const handleLogin = e => {
         e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
+        const email = form.get("email");
+        const password = form.get("password");
+        
         signIn(email, password)
         .then(result => {
             console.log(result.user);

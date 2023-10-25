@@ -1,13 +1,17 @@
 
+import { Outlet } from 'react-router-dom'
 import './App.css'
+import Footer from './Components/HomeSection/Footer/Footer'
+import Navbar from './Components/HomeSection/Navbar/Navbar'
 
 function App() {
   
 
   return (
     <>
-    
-      <h1>Brand Shop Client</h1>
+        <Navbar></Navbar>
+        <Outlet></Outlet>
+        <Footer></Footer>
       
     </>
   )

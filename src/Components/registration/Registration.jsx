@@ -1,24 +1,53 @@
+/* eslint-disable no-undef */
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthProvider";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getAuth, updateProfile } from "firebase/auth";
+
+const auth = getAuth();
+
+
 const Registration = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
+    const { createNewUser} =useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
 
     const handleRegister = e => {
         e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        const name = form.name.value;
-        const photo = form.photo.value;
-        console.log(email, password, name, photo)
+        console.log(e.currentTarget);
+        const form = new FormData(e.currentTarget);
+
+        const email = form.get("email");
+        const photo = form.get("photo");
+        const password = form.get("password");
+        const name = form.get("name");
+        console.log(email, password, name, photo);
+
+        
         createUser(email, password)
         .then(result => {
             console.log(result.user);
         })
         .catch(error => {
             console.error(error);
+        })
+
+        createNewUser(email, password)
+        .then (() => {
+            updateProfile(auth.currentUser, {
+                displayName: name,
+                photoURL: photo,
+            })
+            .then(() => {})
+            .catch((error) => {
+                console.log(error);
+            });
+            console.log(result.user);
+            navigate(location?.state ? location.state : "/");
+            
         })
     }
     

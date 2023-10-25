@@ -1,4 +1,4 @@
-
+import Swal from 'sweetalert2'
 
 const AddProduct = () => {
 
@@ -10,15 +10,36 @@ const AddProduct = () => {
 
         const brandName = form.brandName.value;
         const rating = form.rating.value;
-        const name = form.name.value;
+        const productName = form.productName.value;
         const type = form.type.value;
         const price = form.price.value;
         const description = form.description.value;
         const image = form.image.value;
 
-        const newProduct = { brandName, rating, name, type, price, description, image }
+        const newProduct = { brandName, rating, productName, type, price, description, image }
 
         console.log(newProduct);
+
+
+        fetch('http://localhost:5500/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+        .then(res=> res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Add Product Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
+        })
 
     }
 
@@ -45,14 +66,14 @@ const AddProduct = () => {
                         </label>
                     </div>
                 </div>
-                {/* form Name & Type row */}
+                {/* form Product Name & Type row */}
                 <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Product Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="Name" className="input input-bordered w-full" />
+                            <input type="text" name="productName" placeholder="Name" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
