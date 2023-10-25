@@ -11,7 +11,7 @@ const Details = () => {
     //Add Cart
     const handleAddCart = () => {
         const addToCart = { productName, image, brandName, type, price, description, rating, _id };
-        fetch(`http://localhost:5500/details/`, {
+        fetch(`https://y-psi-liart.vercel.app/details/`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

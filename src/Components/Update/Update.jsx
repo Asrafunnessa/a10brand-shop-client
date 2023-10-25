@@ -21,7 +21,7 @@ const Update = () => {
         console.log(newUpdateProduct);
 
 
-        fetch(`http://localhost:5500/productsId/${_id}`, {
+        fetch(`https://y-psi-liart.vercel.app/productsId/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

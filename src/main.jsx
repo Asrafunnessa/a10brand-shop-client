@@ -47,22 +47,22 @@ const router = createBrowserRouter([
       {
         path: '/:name',
         element: <BrandProducts></BrandProducts>,
-        loader: ({params}) => fetch(`http://localhost:5500/products/${params.name}`)
+        loader: ({params}) => fetch(`https://y-psi-liart.vercel.app/products/${params.name}`)
       },
       {
         path: '/details/:id',
         element: <Details></Details>,
-        loader: ({params}) => fetch(`http://localhost:5500/productsId/${params.id}`)
+        loader: ({params}) => fetch(`https://y-psi-liart.vercel.app/productsId/${params.id}`)
       }, 
       {
         path: '/addCart',
         element: <PrivateRoute><Cart></Cart></PrivateRoute>,
-        loader: () => fetch(`http://localhost:5500/details`)
+        loader: () => fetch(`https://y-psi-liart.vercel.app/details`)
       },
       {
         path: '/update/:id',
         element: <PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5500/productsId/${params.id}`)
+        loader: ({params}) => fetch(`https://y-psi-liart.vercel.app/productsId/${params.id}`)
       }
     ]
   }

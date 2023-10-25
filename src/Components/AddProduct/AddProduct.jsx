@@ -21,7 +21,7 @@ const AddProduct = () => {
         console.log(newProduct);
 
 
-        fetch('http://localhost:5500/products', {
+        fetch('https://y-psi-liart.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

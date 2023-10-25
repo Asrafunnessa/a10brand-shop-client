@@ -21,7 +21,7 @@ const ShowCart = ({cartProduct}) => {
         })
         .then(result=>{
             if(result.isConfirmed){
-                fetch(`http://localhost:5500/details/${id}`, {
+                fetch(`https://y-psi-liart.vercel.app/details/${id}`, {
                         method: 'DELETE'
                     })
                     .then(res => res.json())
