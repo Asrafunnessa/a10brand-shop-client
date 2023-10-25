@@ -20,8 +20,8 @@ const BrandProductsCard = ({ brandProduct }) => {
                 </div>
                 <div className="card-actions justify-end">
                     <div className="btn-group btn-group-vertical space-y-4">
-                       <Link to={`details/${_id}`}><button className="btn btn-primary">Details</button></Link>
-                       <Link to={`update/${_id}`}><button className="btn btn-primary">Update</button></Link>
+                       <Link to={`/details/${_id}`}><button className="btn btn-primary">Details</button></Link>
+                       <Link to={`/update/${_id}`}><button className="btn btn-primary">Update</button></Link>
                     </div>
                 </div>
             </div>
@@ -29,5 +29,6 @@ const BrandProductsCard = ({ brandProduct }) => {
         </div>
     );
 };
+
 
 export default BrandProductsCard;

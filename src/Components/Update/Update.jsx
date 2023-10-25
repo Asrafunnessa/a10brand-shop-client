@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
 const Update = () => {
 
@@ -21,31 +21,31 @@ const Update = () => {
         console.log(newProduct);
 
 
-        fetch(`http://localhost:5500/details/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newProduct)
-        })
-        .then(res=> res.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Add Update Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                })
-            }
-        })
+        // fetch(`http://localhost:5500/details/${_id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newProduct)
+        // })
+        // .then(res=> res.json())
+        // .then(data => {
+        //     console.log(data);
+        //     if(data.insertedId){
+        //         Swal.fire({
+        //             title: 'Success!',
+        //             text: 'Add Update Successfully',
+        //             icon: 'success',
+        //             confirmButtonText: 'Cool'
+        //         })
+        //     }
+        // })
 
     }
 
     return (
         <div className="bg-[#F4F3F0] p-24">
-        <h2 className="text-3xl font-extrabold">Add a Product</h2>
+        <h2 className="text-3xl font-extrabold">Update Product</h2>
         <form onSubmit={handleUpdateProduct}>
             {/* form BrandName and Rating row */}
             <div className="md:flex mb-8">
@@ -115,7 +115,7 @@ const Update = () => {
                     </label>
                 </div>
             </div>
-            <input type="submit" value="Add Product" className="btn btn-block" />
+            <input type="submit" value="Update Product" className="btn btn-block" />
 
         </form>
     </div>

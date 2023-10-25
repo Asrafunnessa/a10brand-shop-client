@@ -1,20 +1,22 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+
 const Details = () => {
 
-        const productDetails = useLoaderData();
-    
-    const {_id, productName, image, brandName, type, price, description, rating } = productDetails;
+    const productDetails = useLoaderData();
 
+    const { productName, image, brandName, type, price, description, rating, _id } = productDetails;
+
+    //Add Cart
     const handleAddCart = () => {
-        const newCart = { productName, image, brandName, type, price, description, rating, _id };
-        fetch(`http://localhost:5173/details/${_id}`, {
+        const addToCart = { productName, image, brandName, type, price, description, rating, _id };
+        fetch(`http://localhost:5500/details/`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newCart)
+            body: JSON.stringify(addToCart)
         })
             .then(res => res.json())
             .then(data => {
@@ -31,8 +33,10 @@ const Details = () => {
 
     }
 
+       
+
     return (
-            <div className='p-32'>
+        <div className='p-32'>
             <h2 className='text-4xl font-semibold text-center text-rose-700 bg-white shadow-lg mb-10 p-2'>Details of Your Desire Product</h2>
             <div className="flex justify-center items-center ">
                 <div className="card w-96 bg-base-100 shadow-xl">
@@ -41,8 +45,8 @@ const Details = () => {
                         <figure><img className='shadow' src={image} /></figure>
                         <div className="text-lg flex">
                             <p className='flex'>Price:{price}</p>
-                            <Link><button onClick={handleAddCart}className="btn shadow-lg">Add To Cart</button></Link>
-                            
+                            <Link to={`/addCart`}><button onClick={handleAddCart} className="btn shadow-lg">Add To Cart</button></Link>
+
                         </div>
                         <div className='flex'>
                             <p>Brand: {brandName}</p>
