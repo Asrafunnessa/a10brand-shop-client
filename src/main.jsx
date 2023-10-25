@@ -34,9 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'addProduct',
-        // element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
-        element: <AddProduct></AddProduct>
-
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
       },
       {
         path: '/login',
@@ -58,12 +56,12 @@ const router = createBrowserRouter([
       }, 
       {
         path: '/addCart',
-        element: <Cart></Cart>,
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>,
         loader: () => fetch(`http://localhost:5500/details`)
       },
       {
         path: '/update/:id',
-        element: <Update></Update>,
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5500/productsId/${params.id}`)
       }
     ]
