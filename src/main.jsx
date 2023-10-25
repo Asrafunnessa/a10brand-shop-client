@@ -11,12 +11,13 @@ import {
 import AddProduct from './Components/AddProduct/AddProduct.jsx';
 import Login from './Components/login/Login.jsx';
 import Registration from './Components/registration/Registration.jsx';
-import AuthProvider from './Providers/AuthProvider.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import Home from './Components/Pages/Home/Home.jsx';
 import BrandProducts from './Components/Pages/BrandProducts/BrandProducts.jsx';
 import Details from './Components/Details/Details.jsx';
 import Update from './Components/Update/Update.jsx';
+import PrivateRoute from './Routes/PrivateRoute.jsx';
+import AuthProvider from './providers/AuthProvider.jsx';
 
 
 const router = createBrowserRouter([
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'addProduct',
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path: '/login',
